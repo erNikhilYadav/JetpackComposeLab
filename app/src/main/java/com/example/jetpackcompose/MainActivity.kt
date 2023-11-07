@@ -27,6 +27,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.navigation.Nav
 import com.example.jetpackcompose.ui.theme.HappyBirthdayTheme
 import com.example.jetpackcompose.ui.theme.LemonTheme
 
@@ -35,91 +38,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LemonTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
-                ) {
-                    DiceWithButtonAndImage()
-                }
+                Nav()
             }
         }
-    }
-}
-
-/*---------Level 3------------*/
-
-
-
-
-
-/*---------Level 2------------*/
-
-
-@Preview(showBackground = true)
-@Composable
-fun DiceRollerApp() {
-    DiceWithButtonAndImage()
-}
-
-@Composable
-fun DiceWithButtonAndImage(
-    modifier: Modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
-) {
-    Column(
-        modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        var result by remember {
-            mutableStateOf(1)
-        }
-
-        val imageResource = when (result) {
-            1 -> R.drawable.dice_1
-            2 -> R.drawable.dice_2
-            3 -> R.drawable.dice_3
-            4 -> R.drawable.dice_4
-            5 -> R.drawable.dice_5
-            else -> R.drawable.dice_6
-        }
-
-        Image(painter = painterResource(imageResource), contentDescription = result.toString())
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = { result = (1..6).random() }) {
-            Text(stringResource(R.string.roll))
-        }
-
-    }
-}
-
-
-/*---------Level 1------------*/
-
-@Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.padding(8.dp), verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.End)
-        )
-        Text(
-            text = from, fontSize = 36.sp
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HappyBirthdayTheme {
-        GreetingText(message = "Hey I'm here", from = "From Nikhil")
     }
 }
