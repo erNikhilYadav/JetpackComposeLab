@@ -4,30 +4,34 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.utils.Constants.HOME
+import com.example.jetpackcompose.utils.Constants.LOGIN
+import com.example.jetpackcompose.utils.Constants.SIGN_UP
+import com.example.jetpackcompose.utils.Constants.SPLASH
 import com.example.jetpackcompose.screens.HomeScreen
 import com.example.jetpackcompose.screens.LoginScreen
 import com.example.jetpackcompose.screens.SignupScreen
 import com.example.jetpackcompose.screens.SplashScreen
 
 @Composable
-fun Nav(){
+fun AppNavigation() {
 
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = SPLASH) {
 
-        composable(route = "splash"){
+        composable(route = SPLASH) {
             SplashScreen(navController)
         }
 
-        composable(route = "login"){
+        composable(route = LOGIN) {
             LoginScreen(navController)
         }
 
-        composable(route = "signup"){
+        composable(route = SIGN_UP) {
             SignupScreen(navController)
         }
 
-        composable(route = "home"){
+        composable(route = HOME) {
             HomeScreen(navController)
         }
     }
