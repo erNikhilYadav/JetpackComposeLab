@@ -19,7 +19,6 @@ import kotlinx.coroutines.delay
 fun SplashScreen(
     navigateAfterAnimation: () -> Unit
 ) {
-    val proceed = true
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -30,12 +29,10 @@ fun SplashScreen(
             fontSize = 52.sp
         )
     }
-
-    LaunchedEffect(key1 = proceed, block = {
+    LaunchedEffect("") {
         delay(2000)
         navigateAfterAnimation.invoke()
-    })
-
+    }
 }
 
 
