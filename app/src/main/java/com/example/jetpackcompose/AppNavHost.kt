@@ -23,9 +23,12 @@ object Destinations {
 
 @Composable
 fun AppNavigation() {
-
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = SPLASH_ROUTE) {
+
+    NavHost(
+        navController = navController,
+        startDestination = SPLASH_ROUTE
+    ) {
 
         composable(route = SPLASH_ROUTE) {
             SplashScreen(
